@@ -64,7 +64,6 @@
       cursor: grabbing;
     }
     .word-chip.selected-chip {
-      ring: 2px;
       outline: 2px solid #4f46e5;
       background-color: #e0e7ff;
       transform: translateY(-2px);
@@ -105,16 +104,16 @@
 
       <!-- Navegação por Abas -->
       <nav class="flex flex-wrap gap-2 mt-6 pt-4 border-t border-white/15" aria-label="Navegação de atividades">
-        <button onclick="switchTab('guia')" id="tab-guia" class="tab-btn active px-4 py-2 rounded-lg text-sm font-semibold bg-white/10 text-indigo-100 hover:bg-white/20 transition">
-          1. Guia & Contrastes
+        <button type="button" onclick="switchTab('guia')" id="tab-guia" class="tab-btn active px-4 py-2 rounded-lg text-sm font-semibold bg-white/10 text-indigo-100 hover:bg-white/20 transition">
+          1. Guia &amp; Contrastes
         </button>
-        <button onclick="switchTab('drag')" id="tab-drag" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white/10 text-indigo-100 hover:bg-white/20 transition">
+        <button type="button" onclick="switchTab('drag')" id="tab-drag" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white/10 text-indigo-100 hover:bg-white/20 transition">
           2. Completar Texto (Arrastar)
         </button>
-        <button onclick="switchTab('sentido')" id="tab-sentido" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white/10 text-indigo-100 hover:bg-white/20 transition">
+        <button type="button" onclick="switchTab('sentido')" id="tab-sentido" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white/10 text-indigo-100 hover:bg-white/20 transition">
           3. Diagnóstico de Sentido
         </button>
-        <button onclick="switchTab('dialogos')" id="tab-dialogos" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white/10 text-indigo-100 hover:bg-white/20 transition">
+        <button type="button" onclick="switchTab('dialogos')" id="tab-dialogos" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold bg-white/10 text-indigo-100 hover:bg-white/20 transition">
           4. Microdiálogos Reais
         </button>
       </nav>
@@ -134,181 +133,4 @@
         <div class="grid sm:grid-cols-2 gap-4 mt-4">
           <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4">
             <div class="text-xs font-bold uppercase tracking-wider text-indigo-700">SER (é, era, foi...)</div>
-            <p class="text-sm text-slate-700 mt-1">Define a natureza, a personalidade, a qualidade intrínseca ou a classificação geral de algo ou alguém.</p>
-          </div>
-          <div class="bg-amber-50 border border-amber-100 rounded-xl p-4">
-            <div class="text-xs font-bold uppercase tracking-wider text-amber-700">ESTAR / TÁ (está, tá, tava...)</div>
-            <p class="text-sm text-slate-700 mt-1">Expressa uma impressão momentânea, um estado passageiro, uma condição específica ou a aparência atual.</p>
-          </div>
-        </div>
-      </div>
-
-      <div id="adjectives-container" class="space-y-4"></div>
-
-      <div class="flex justify-end">
-        <button onclick="switchTab('drag')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2.5 rounded-xl shadow-sm transition">
-          Ir para Atividade 1: Completar o Texto →
-        </button>
-      </div>
-    </section>
-
-    <!-- ABA 2: DRAG & DROP -->
-    <section id="section-drag" class="hidden space-y-6">
-      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
-          <div>
-            <h2 class="text-xl font-bold text-slate-900">Atividade 1: Conversa no Fim do Expediente</h2>
-            <p class="text-sm text-slate-600 mt-1">
-              Arraste as expressões abaixo para as lacunas (ou clique em uma opção e depois na lacuna desejada). Observe o contexto de cada fala!
-            </p>
-          </div>
-          <span id="drag-score-badge" class="text-xs font-bold bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full self-start sm:self-center">
-            0 / 8 completas
-          </span>
-        </div>
-
-        <!-- Banco de Palavras -->
-        <div class="mt-5">
-          <div class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Banco de expressões:</div>
-          <div id="word-bank" class="flex flex-wrap gap-2 p-3.5 bg-slate-50 border border-slate-200 rounded-xl min-h-[58px]"></div>
-        </div>
-
-        <!-- Texto com Lacunas -->
-        <div class="mt-6 bg-slate-50/70 border border-slate-200 rounded-2xl p-5 sm:p-6 space-y-4 text-base sm:text-[17px] leading-loose text-slate-800">
-          <p>
-            <strong>Marina:</strong> E aí, Lucas, conseguiu voltar de carro ontem ou 
-            <span class="drop-slot" data-slot="0" onclick="handleSlotClick(0)" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 0)"></span>
-            por causa da chuva?
-          </p>
-          <p>
-            <strong>Lucas:</strong> Nossa, nem me fale! Naquela avenida o trânsito já 
-            <span class="drop-slot" data-slot="1" onclick="handleSlotClick(1)" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 1)"></span>
-            normalmente, mas ontem parou tudo. Ainda bem que comprei um carro usado que 
-            <span class="drop-slot" data-slot="2" onclick="handleSlotClick(2)" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 2)"></span>
-            e tem ar-condicionado.
-          </p>
-          <p>
-            <strong>Marina:</strong> Verdade, parece que saiu da loja agora! E você já decidiu se vai aceitar aquela proposta de transferência?
-          </p>
-          <p>
-            <strong>Lucas:</strong> Olha, ainda não 
-            <span class="drop-slot" data-slot="3" onclick="handleSlotClick(3)" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 3)"></span>
-            disso. O salário 
-            <span class="drop-slot" data-slot="4" onclick="handleSlotClick(4)" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 4)"></span>
-            para o cargo, mas o bairro da empresa não 
-            <span class="drop-slot" data-slot="5" onclick="handleSlotClick(5)" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 5)"></span>
-            à noite.
-          </p>
-          <p>
-            <strong>Marina:</strong> Faz sentido pensar bem. Ah, você provou o café da copa hoje? Acho que esqueceram a garrafa aberta, porque 
-            <span class="drop-slot" data-slot="6" onclick="handleSlotClick(6)" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 6)"></span>
-            demais!
-          </p>
-          <p>
-            <strong>Lucas:</strong> Nem tentei! O pessoal do turno da manhã 
-            <span class="drop-slot" data-slot="7" onclick="handleSlotClick(7)" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="handleDrop(event, 7)"></span>
-            para fazer café; sempre queimam o pó.
-          </p>
-        </div>
-
-        <!-- Botões de Ação -->
-        <div class="flex flex-wrap items-center justify-between gap-3 mt-6">
-          <div class="flex flex-wrap gap-2">
-            <button onclick="checkDragExercise()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2.5 rounded-xl shadow-sm transition">
-              Verificar Respostas
-            </button>
-            <button onclick="resetDragExercise()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold px-4 py-2.5 rounded-xl transition">
-              Limpar Tudo
-            </button>
-          </div>
-          <button onclick="switchTab('sentido')" class="text-indigo-600 hover:text-indigo-800 font-semibold text-sm">
-            Próxima Atividade →
-          </button>
-        </div>
-
-        <!-- Gabarito Comentado -->
-        <div id="drag-feedback" class="hidden mt-6 space-y-3 border-t border-slate-200 pt-5"></div>
-      </div>
-    </section>
-
-    <!-- ABA 3: DIAGNÓSTICO DE SENTIDO -->
-    <section id="section-sentido" class="hidden space-y-6">
-      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
-          <div>
-            <h2 class="text-xl font-bold text-slate-900">Atividade 2: Qual é o Sentido Exato da Frase?</h2>
-            <p class="text-sm text-slate-600 mt-1">
-              Leia cada fala do cotidiano e marque a interpretação correta de acordo com o uso de <strong>ser</strong> ou <strong>estar / tá</strong>.
-            </p>
-          </div>
-          <span id="meaning-score-badge" class="text-xs font-bold bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-full self-start sm:self-center">
-            0 / 8 acertos
-          </span>
-        </div>
-
-        <div id="meaning-questions" class="mt-6 space-y-5"></div>
-
-        <div class="flex justify-end mt-6 pt-4 border-t border-slate-100">
-          <button onclick="switchTab('dialogos')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2.5 rounded-xl shadow-sm transition">
-            Ir para Atividade 3: Microdiálogos Reais →
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABA 4: MICRODIÁLOGOS REAIS -->
-    <section id="section-dialogos" class="hidden space-y-6">
-      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100">
-          <div>
-            <h2 class="text-xl font-bold text-slate-900">Atividade 3: Escolha a Réplica Mais Natural</h2>
-            <p class="text-sm text-slate-600 mt-1">
-              Leia a situação e escolha a resposta que melhor combina com o contexto comunicativo e o registro do português brasileiro.
-            </p>
-          </div>
-          <span id="dialogue-score-badge" class="text-xs font-bold bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-full self-start sm:self-center">
-            0 / 6 acertos
-          </span>
-        </div>
-
-        <div id="dialogue-questions" class="mt-6 space-y-5"></div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
-    Material interativo de apoio para aula de Português como Língua Estrangeira (PLE)
-  </footer>
-
-  <script>
-    // ==========================================
-    // DADOS DA ABA 1: GUIA E CONTRASTES
-    // ==========================================
-    const guideData = [
-      {
-        adj: "CHATO / CHATA",
-        serTitle: "SER chato(a) = Pessoa irritante / algo entediante por natureza",
-        serEx: "“Esse cara é muito chato; ele só reclama de tudo.” / “Burocracia é chata.”",
-        estarTitle: "ESTAR / TÁ chato(a) = Situação incômoda no momento / alguém agindo mal hoje",
-        estarEx: "“Hoje o trânsito tá chato demais.” / “Não fica assim, você tá muito chato hoje.”",
-        tip: "Com clima, trânsito ou dia de trabalho, usa-se quase sempre TÁ chato para falar de hoje."
-      },
-      {
-        adj: "LEGAL",
-        serTitle: "SER legal = Pessoa simpática / ideia ou coisa interessante",
-        serEx: "“A nova professora é super legal.” / “Foi muito legal conhecer vocês.”",
-        estarTitle: "ESTAR / TÁ legal = Estar bem (saúde/ânimo) / algo que ficou bom no momento",
-        estarEx: "“Não tô muito legal hoje, acho que comi algo pesado.” / “O corte de cabelo tá legal!”",
-        tip: "Na fala informal, 'Tô legal' também significa 'estou bem, obrigado' (ou 'não preciso de mais nada')."
-      },
-      {
-        adj: "SEGURO / SEGURA",
-        serTitle: "SER seguro(a) = Lugar protegido / método confiável / pessoa autoconfiante",
-        serEx: "“Esse bairro é bem seguro para caminhar.” / “Ela é uma profissional muito segura.”",
-        estarTitle: "ESTAR / TÁ seguro(a) = Sentir-se convicto no momento / estar protegido agora",
-        estarEx: "“Ainda não tô seguro dessa decisão.” / “Pode ficar tranquilo, as crianças estão seguras lá.”",
-        tip: "Estar seguro DE algo significa ter certeza ou confiança sobre aquela escolha específica."
-      },
-      {
-        adj: "
+            <p class="text-sm text-slate-70
